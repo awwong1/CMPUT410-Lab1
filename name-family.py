@@ -23,28 +23,47 @@ class Student:
       name= ""
       
       def __init__(self, name):
-          self.name = name
-      
+            """
+            Initializes the student object
+            
+            >>> biologist = Student("Biologist In Training")
+            >>> print biologist.name
+            Biologist In Training
+            """
+
+            self.courseMarks = {}
+            self.name = name
+            
       def addCourseMark(self, course, mark):
-          self.courseMarks[course] = mark
+            """
+            Adds a course to the course marks.
+            Assumes that mark is a float/int. Does not type check.
+            
+            >>> engineer = Student("Engineer In Training")
+            >>> engineer.addCourseMark("MATH100", 2.0)
+            >>> print(engineer.courseMarks["MATH100"])
+            2.0
+            """
+
+            self.courseMarks[course] = mark
           
       def average(self):
-          """
-          Returns the average of all the course marks for this student
-
-          Assumes that all marks are floats/ints, use default operators
-          Note: This is not guaranteed to be floating point precise
-          
-          >>> x = Student("Biologist In Training")
-          >>> x.addCourseMark("BIOL100", 4.0)
-          >>> x.addCourseMark("BIOL101", 3.0)
-          >>> print x.average()
-          3.5
-          
-          """
-          avelist = self.courseMarks.values()
-          return sum(avelist)/len(avelist)
-
+            """
+            Returns the average of all the course marks for this student
+            
+            Assumes that all marks are floats/ints, use default operators
+            Note: This is not guaranteed to be floating point precise
+            
+            >>> man = Student("Man In Training")
+            >>> man.addCourseMark("MAN100", 4.0)
+            >>> man.addCourseMark("MAN200", 3.0)
+            >>> print man.average()
+            3.5
+            """
+            
+            avelist = self.courseMarks.values()
+            return sum(avelist)/len(avelist)
+      
 if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
+      import doctest
+      doctest.testmod()
