@@ -14,6 +14,8 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+To run with tests, type "python name-family.py -v"
 """
 
 class Student:
@@ -27,10 +29,22 @@ class Student:
           self.courseMarks[course] = mark
           
       def average(self):
+          """
+          Returns the average of all the course marks for this student
+
+          Assumes that all marks are floats/ints, use default operators
+          Note: This is not guaranteed to be floating point precise
+          
+          >>> x = Student("Biologist In Training")
+          >>> x.addCourseMark("BIOL100", 4.0)
+          >>> x.addCourseMark("BIOL101", 3.0)
+          >>> print x.average()
+          3.5
+          
+          """
           avelist = self.courseMarks.values()
           return sum(avelist)/len(avelist)
 
-x = Student("Biologist In Training")
-x.addCourseMark("BIOL100", 4.0)
-x.addCourseMark("BIOL101", 3.0)
-print x.average()
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
